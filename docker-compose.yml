@@ -1,0 +1,32 @@
+version: '3.8'
+services:
+  server:
+    # image: registry.hub.docker.com/library/node:22-bookworm
+    # note this is releative to root of compose
+      # "image": "registry.hub.docker.com/library/node:22-bookworm", # NOTE defining just image works but building server fails
+      build: ./server
+        # target: base
+        # context: . 
+        # dockerfile: .devcontainer/Dockerfile 
+        # dockerfile: Dockerfile
+      environment:
+        NODE_ENV: development
+      # develop:
+      #   watch:
+      #     - action: sync
+      #       path: .
+      #       target: /server
+  dragonfly:
+    image: 'docker.dragonflydb.io/dragonflydb/dragonfly'
+    ulimits:
+      memlock: -1
+    ports:
+      - "6379:6379"
+    # For better performance, consider `host` mode instead `port` to avoid docker NAT.
+    # `host` mode is NOT currently supported in Swarm Mode.
+    # https://docs.docker.com/compose/compose-file/compose-file-v3/#network_mode
+    # network_mode: "host"
+    volumes:
+      - dragonflydata:/data
+volumes:
+  dragonflydata:

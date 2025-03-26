@@ -1,0 +1,24 @@
+{
+    // "dockerComposeFile": ["../docker-compose.yml", "docker-compose.extend.yml"],
+    "dockerComposeFile": "../docker-compose.yml",
+    "service": "server",
+    "workspaceFolder": "/workspace",
+    "shutdownAction": "stopCompose",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "streetsidesoftware.code-spell-checker",
+                "dbaeumer.vscode-eslint"
+            ]
+        }
+    },
+    "forwardPorts": [
+        3000
+    ],
+    "features": {
+        "ghcr.io/devcontainers/features/azure-cli:1": {
+            "version": "latest"
+        }
+    }
+    // "postCreateCommand": "bash -i scripts/install-dependencies.sh"
+}
