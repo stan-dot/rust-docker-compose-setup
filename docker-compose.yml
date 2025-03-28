@@ -1,20 +1,23 @@
 version: '3.8'
 services:
   server:
-    # image: registry.hub.docker.com/library/node:22-bookworm
-    # note this is releative to root of compose
-      # "image": "registry.hub.docker.com/library/node:22-bookworm", # NOTE defining just image works but building server fails
       volumes: 
-        - ..:/workspace
-      build: ./server
+        - .:/workspace
+      build: 
+        context: ./server
+        dockerfile: Dockerfile
+      environment:
+        NODE_ENV: development
       # volumes:
       #   - .:/workspace
         # target: base
         # context: . 
         # dockerfile: .devcontainer/Dockerfile 
         # dockerfile: Dockerfile
-      environment:
-        NODE_ENV: development
+      # image: registry.hub.docker.com/library/node:22-bookworm
+      # note this is releative to root of compose
+      # "image": "registry.hub.docker.com/library/node:22-bookworm", # NOTE defining just image works but building server fails
+      # image: local-server
       # develop:
       #   watch:
       #     - action: sync

@@ -16,6 +16,15 @@
         3000
     ],
     "features": {
-    }
+        "ghcr.io/devcontainers/features/common-utils:2": {
+            "configureZshAsDefaultShell": true
+        }
+    },
+    "initializeCommand": "bash -c 'for i in $HOME/.inputrc; do [ -f $i ] || touch $i; done'",
+    "mounts": [
+        "source=${localEnv:HOME}/.ssh,target=/root/.ssh,type=bind",
+        "source=${localEnv:HOME}/.inputrc,target=/root/.inputrc,type=bind"
+    ],
+    // "workspaceFolder": "source=${localWorkspaceFolder}/server,target=/workspace,type=bind",
     // "postCreateCommand": "bash -i scripts/install-dependencies.sh"
 }
