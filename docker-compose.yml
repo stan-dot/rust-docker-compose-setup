@@ -4,7 +4,11 @@ services:
     # image: registry.hub.docker.com/library/node:22-bookworm
     # note this is releative to root of compose
       # "image": "registry.hub.docker.com/library/node:22-bookworm", # NOTE defining just image works but building server fails
+      volumes: 
+        - ..:/workspace
       build: ./server
+      # volumes:
+      #   - .:/workspace
         # target: base
         # context: . 
         # dockerfile: .devcontainer/Dockerfile 

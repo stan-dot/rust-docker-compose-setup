@@ -16,9 +16,6 @@
         3000
     ],
     "features": {
-        "ghcr.io/devcontainers/features/azure-cli:1": {
-            "version": "latest"
-        }
     }
     // "postCreateCommand": "bash -i scripts/install-dependencies.sh"
 }
