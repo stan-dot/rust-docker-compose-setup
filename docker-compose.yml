@@ -1,4 +1,3 @@
-version: '3.8'
 services:
   server:
       volumes: 
@@ -8,6 +7,7 @@ services:
         dockerfile: Dockerfile
       environment:
         NODE_ENV: development
+      network_mode: service:dragonfly
       # volumes:
       #   - .:/workspace
         # target: base

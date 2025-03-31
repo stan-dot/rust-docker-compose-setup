@@ -15,11 +15,11 @@
     "forwardPorts": [
         3000
     ],
-    "features": {
-        "ghcr.io/devcontainers/features/common-utils:2": {
-            "configureZshAsDefaultShell": true
-        }
-    },
+    // "features": {
+    //     "ghcr.io/devcontainers/features/common-utils:2": {
+    //         "configureZshAsDefaultShell": true
+    //     }
+    // },
     "initializeCommand": "bash -c 'for i in $HOME/.inputrc; do [ -f $i ] || touch $i; done'",
     "mounts": [
         "source=${localEnv:HOME}/.ssh,target=/root/.ssh,type=bind",
