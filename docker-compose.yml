@@ -1,28 +1,31 @@
-version: '3.8'
 services:
   server:
-      volumes: 
-        - .:/workspace
-      build: 
-        context: ./server
-        dockerfile: Dockerfile
-      environment:
-        NODE_ENV: development
-      # volumes:
-      #   - .:/workspace
-        # target: base
-        # context: . 
-        # dockerfile: .devcontainer/Dockerfile 
-        # dockerfile: Dockerfile
-      # image: registry.hub.docker.com/library/node:22-bookworm
-      # note this is releative to root of compose
-      # "image": "registry.hub.docker.com/library/node:22-bookworm", # NOTE defining just image works but building server fails
-      # image: local-server
-      # develop:
-      #   watch:
-      #     - action: sync
-      #       path: .
-      #       target: /server
+    volumes:
+      - ..:/workspaces:z
+    build:
+      context: ./server
+    environment:
+      NODE_ENV: development
+    ports:
+      - 3000:3000
+    depends_on:
+      - dragonfly
+    network_mode: service:dragonfly
+    # volumes:
+    #   - .:/workspace
+      # target: base
+      # context: .
+      # dockerfile: .devcontainer/Dockerfile
+      # dockerfile: Dockerfile
+    # image: registry.hub.docker.com/library/node:22-bookworm
+    # note this is releative to root of compose
+    # "image": "registry.hub.docker.com/library/node:22-bookworm", # NOTE defining just image works but building server fails
+    # image: local-server
+    # develop:
+    #   watch:
+    #     - action: sync
+    #       path: .
+    #       target: /server
   dragonfly:
     image: 'docker.dragonflydb.io/dragonflydb/dragonfly'
     ulimits:
