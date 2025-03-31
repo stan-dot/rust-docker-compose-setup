@@ -1,7 +1,8 @@
 const express = require('express')
 const app = express()
-const port = 3000
+const port = 3001
 
+// from https://github.com/redis/ioredis?tab=readme-ov-file#basic-usage
 // Import ioredis.
 // You can also use `import { Redis } from "ioredis"`
 // if your project is a TypeScript project,
@@ -41,6 +42,8 @@ redis.zrange("sortedSet", 0, 2, "WITHSCORES").then((elements) => {
 // The format is: redis[SOME_REDIS_COMMAND_IN_LOWERCASE](ARGUMENTS_ARE_JOINED_INTO_COMMAND_STRING)
 // so the following statement is equivalent to the CLI: `redis> SET mykey hello EX 10`
 redis.set("mykey", "hello", "EX", 10);
+
+console.log("hello world");
 
 app.get('/', (req, res) => {
     res.send('Hello World Again!')
