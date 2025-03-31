@@ -3,4 +3,8 @@ RUN apt-get update && export DEBIAN_FRONTEND=noninteractive && apt-get -y instal
 
 # "image": "registry.hub.docker.com/library/node:22-bookworm",
 
-COPY . /app
+WORKDIR /app
+COPY . .
+RUN npm install
+
+ENTRYPOINT ["npm", "start"]
